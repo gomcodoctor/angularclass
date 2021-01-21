@@ -2,7 +2,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -12,6 +11,17 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
+    "baseUrl": "./src",
+    "paths": {
+      "~app/*": ["app/*"],
+      "~models/*": ["app/models/*"],
+      "~modules/*": ["app/modules/*"],
+      "~services/*": ["app/services/*"],
+      "~utils/*": ["app/utils/*"],
+      "~components/*": ["app/components/*"],
+      "~environments": ["environments/environment"],
+      "~guards/*": ["app/guards/*"]
+    },
     "lib": [
       "es2018",
       "dom"
