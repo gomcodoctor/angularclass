@@ -1,2 +1,12 @@
 <p>I am hello component</p>
-<p>Hello {{queryParams.name}}</p>
+<p>Hello {{params.name}}</p>
+
+<ul>
+  <li *ngFor="let item of items">{{item}}</li>
+</ul>
+
+
+<app-firstchild name="Manoj" age="24" (newItemEvent)="addItem($event)"></app-firstchild>
+
+<app-firstchild [name]="params.name" age="30"></app-firstchild>
+

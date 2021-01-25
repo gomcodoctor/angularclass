@@ -8,15 +8,28 @@ import {ActivatedRoute, Params} from "@angular/router";
 })
 export class HelloComponent implements OnInit {
   queryParams: Params;
+  params: Params;
+
+  items = [];
 
   constructor(protected _route: ActivatedRoute) { }
 
   public ngOnInit(): void {
-    this._route.params.subscribe((queryParams) => {
+    this._route.params.subscribe((params) => {
+      this.params = params;
+      console.log(params);
+
+    });
+
+    this._route.queryParams.subscribe((queryParams) => {
       this.queryParams = queryParams;
       console.log(queryParams);
-      //{name: 'Rakesh'}
+
     });
+  }
+
+  addItem(newItem: string) {
+    this.items.push(newItem);
   }
 
 }
