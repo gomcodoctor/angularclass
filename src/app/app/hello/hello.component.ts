@@ -32,4 +32,8 @@ export class HelloComponent implements OnInit {
     this.items.push(newItem);
   }
 
+  removeItem(index) {
+    this.items.splice(index, 1);
+  }
+
 }

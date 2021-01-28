@@ -1,4 +1,5 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-firstchild',
@@ -11,6 +12,11 @@ export class FirstchildComponent implements OnInit {
   @Input() age = 30;
 
   @Output() newItemEvent = new EventEmitter<string>();
+
+  inputName = new FormControl('', [
+    Validators.required,
+    Validators.minLength(4),
+  ]);
 
   constructor() { }
 

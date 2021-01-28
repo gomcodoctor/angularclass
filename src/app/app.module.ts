@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HelloComponent } from './app/hello/hello.component';
 import { FirstchildComponent } from './firstchild/firstchild.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -13,11 +14,12 @@ import { FirstchildComponent } from './firstchild/firstchild.component';
     HelloComponent,
     FirstchildComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

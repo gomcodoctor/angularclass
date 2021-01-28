@@ -2,11 +2,11 @@
 <p>Hello {{params.name}}</p>
 
 <ul>
-  <li *ngFor="let item of items">{{item}}</li>
+  <li *ngFor="let item of items; let i = index;" (click)="removeItem(i)">{{item}}</li>
 </ul>
 
 
 <app-firstchild name="Manoj" age="24" (newItemEvent)="addItem($event)"></app-firstchild>
 
-<app-firstchild [name]="params.name" age="30"></app-firstchild>
+<!--<app-firstchild [name]="params.name" age="30"></app-firstchild>-->
 

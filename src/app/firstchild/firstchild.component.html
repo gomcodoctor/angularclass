@@ -1,4 +1,30 @@
 <p>Age of {{name}} is {{age}} years </p>
 
 
-<button (click)="addNewItem('Rakesh')">Add to parent's list</button>
+<label>
+  Name:
+  <input type="text" [formControl]="inputName">
+</label>
+
+<p>
+  Inputted value : {{ inputName.value }}
+</p>
+
+<div *ngIf="inputName.touched">I was touched</div>
+<div *ngIf="inputName.dirty">I am dirty</div>
+<div *ngIf="inputName.invalid">I am Invalid</div>
+
+<div *ngIf="inputName.invalid && (inputName.dirty || inputName.touched)"
+     class="alert alert-danger">
+
+
+  <div *ngIf="inputName.errors.required">
+    Name is required.
+  </div>
+  <div *ngIf="inputName.errors.minlength">
+    Name must be at least 4 characters long.
+  </div>
+</div>
+
+
+<button [disabled]="inputName.invalid" (click)="addNewItem(inputName.value)">Add to parent's list</button>
