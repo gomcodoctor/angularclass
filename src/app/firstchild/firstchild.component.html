@@ -10,14 +10,14 @@
   Inputted value : {{ inputName.value }}
 </p>
 
-<div *ngIf="inputName.touched">I was touched</div>
-<div *ngIf="inputName.dirty">I am dirty</div>
-<div *ngIf="inputName.invalid">I am Invalid</div>
+<!--<div *ngIf="inputName.touched">I was touched</div>-->
+<!--<div *ngIf="inputName.dirty">I am dirty</div>-->
+<!--<div *ngIf="inputName.invalid">I am Invalid</div>-->
 
 <div *ngIf="inputName.invalid && (inputName.dirty || inputName.touched)"
      class="alert alert-danger">
 
-
+  <div>I am true</div>
   <div *ngIf="inputName.errors.required">
     Name is required.
   </div>
@@ -28,3 +28,40 @@
 
 
 <button [disabled]="inputName.invalid" (click)="addNewItem(inputName.value)">Add to parent's list</button>
+
+
+<form [formGroup]="profileForm">
+
+  <label>
+    First Name:
+    <input type="text" formControlName="firstName">
+  </label>
+
+  <label>
+    Last Name:
+    <input type="text" formControlName="lastName">
+  </label>
+
+  <div *ngIf="profileForm.invalid && (profileForm.dirty || profileForm.touched)"
+       class="alert alert-danger">
+
+    <div *ngIf="profileForm.get('firstName').errors && profileForm.get('firstName').errors.required">
+      First Name is required.
+    </div>
+    <div *ngIf="profileForm.get('firstName').errors && profileForm.get('firstName').errors.minlength">
+      First Name must be at least 4 characters long.
+    </div>
+
+    <div *ngIf="profileForm.get('lastName').errors && profileForm.get('lastName').errors.required">
+      lastName Name is required.
+    </div>
+    <div *ngIf="profileForm.get('lastName').errors && profileForm.get('lastName').errors.minlength">
+      lastName Name must be at least 4 characters long.
+    </div>
+  </div>
+
+  <button type="button" [disabled]="profileForm.invalid" (click)="addNewItem(profileForm.value)">Add to parent's list</button>
+
+
+</form>
+

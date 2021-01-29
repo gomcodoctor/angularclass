@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import {FormControl, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-firstchild',
@@ -18,12 +18,25 @@ export class FirstchildComponent implements OnInit {
     Validators.minLength(4),
   ]);
 
+  profileForm = new FormGroup({
+    firstName: new FormControl('rakesh', [
+      Validators.required,
+      Validators.minLength(4),
+    ]),
+    lastName: new FormControl('garg', [
+      Validators.required,
+      Validators.minLength(4),
+    ]),
+  });
+
   constructor() { }
 
   ngOnInit(): void {
+    this.profileForm.setValue({firstName: "Amit", lastName: "tiwari"});
   }
 
   addNewItem(value: string) {
+    console.log(value);
     this.newItemEvent.emit(value);
   }
 
