@@ -1,5 +1,7 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {HttpClient} from "@angular/common/http";
+import {FirstserviceService} from "~services/firstservice.service";
 
 @Component({
   selector: 'app-firstchild',
@@ -8,7 +10,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class FirstchildComponent implements OnInit {
 
-  @Input() name = 'ravinder';
+  @Input() name;
   @Input() age = 30;
 
   @Output() newItemEvent = new EventEmitter<string>();
@@ -29,9 +31,16 @@ export class FirstchildComponent implements OnInit {
     ]),
   });
 
-  constructor() { }
+  constructor(private http: HttpClient, private firstService: FirstserviceService) { }
 
   ngOnInit(): void {
+    this.firstService.name = 'tiwari';
+    // this.name = this.firstService.name;
+    this.http.get('https://jsonplaceholder.typicode.com/todos/1').subscribe((response: any ) => {
+      this.name = response.title;
+      console.log(response);
+    })
+
     this.profileForm.setValue({firstName: "Amit", lastName: "tiwari"});
   }
 

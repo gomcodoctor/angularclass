@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
+import {FirstserviceService} from "~services/firstservice.service";
 
 @Component({
   selector: 'app-hello',
@@ -12,9 +13,13 @@ export class HelloComponent implements OnInit {
 
   items = [];
 
-  constructor(protected _route: ActivatedRoute) { }
+  constructor(protected _route: ActivatedRoute, private firstService: FirstserviceService) { }
 
   public ngOnInit(): void {
+    console.log(this.firstService.name);
+
+    this.firstService.name = 'Manpreet';
+
     this._route.params.subscribe((params) => {
       this.params = params;
       console.log(params);
